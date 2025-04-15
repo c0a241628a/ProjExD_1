@@ -27,7 +27,9 @@ def main():
         screen.blit(bg_img, [-x+3200, 0]) #9
         
         screen.blit(KK_img, KK_rct) #4,10
-        KK_rct.move_ip((-1, 0))
+        
+        #KK_rct.move_ip((-1, 0))
+        
         key_lst = pg.key.get_pressed() #10
         xziku=0
         yziku=0
@@ -39,6 +41,7 @@ def main():
             xziku+=2
         if key_lst[pg.K_LEFT]:
             xziku+=-1
+        xziku+=-1
         KK_rct.move_ip((xziku, yziku))
         
         pg.display.update()
