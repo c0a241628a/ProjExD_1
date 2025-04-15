@@ -13,6 +13,8 @@ def main():
     bg_img2 = pg.transform.flip(bg_img,True,False) #8
     KK_img = pg.image.load("fig/3.png") #2
     KK_img = pg.transform.flip(KK_img,True,False) #2
+    KK_rct = KK_img.get_rect() #10:Rectの抽出
+    KK_rct.center = 300,200 #10
     
     tmr = 0
     while True:
@@ -24,7 +26,17 @@ def main():
         screen.blit(bg_img2, [-x+1600,0]) #7,8
         screen.blit(bg_img, [-x+3200, 0]) #9
          
-        screen.blit(KK_img, [300, 200]) #4
+        screen.blit(KK_img, KK_rct) #4,10
+        
+        key_lst = pg.key.get_pressed() #10
+        if key_lst[pg.K_UP]:
+            KK_rct.move_ip((0, -1))
+        if key_lst[pg.K_DOWN]:
+            KK_rct.move_ip((0, 1))
+        if key_lst[pg.K_RIGHT]:
+            KK_rct.move_ip((1, 0))
+        if key_lst[pg.K_LEFT]:
+            KK_rct.move_ip((-1, 0))
         
         pg.display.update()
         tmr += 1        
